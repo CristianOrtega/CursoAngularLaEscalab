@@ -1,0 +1,8 @@
+<h2>Calculadora</h2>
+<input type="number" [(ngModel)]="num1">
+<input type="number" [(ngModel)]="num2">
+
+<button mat-raised-button color="primary" (click)="calcular('s')">Sumar</button>
+<button mat-raised-button color="primary" (click)="calcular('r')">Restar</button>
+<button mat-raised-button color="primary" (click)="calcular('m')">Multiplicar</button>
+<button mat-raised-button color="primary" (click)="calcular('d')">Dividir</button>
