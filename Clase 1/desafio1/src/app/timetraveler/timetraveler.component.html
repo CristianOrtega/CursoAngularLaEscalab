@@ -1,1 +1,11 @@
-<p>timetraveler works!</p>
+<h2>Viajero del Tiempo</h2>
+
+<mat-form-field class="example-full-width">
+    <mat-label>Días</mat-label>
+    <input matInput type="number" [(ngModel)]="days">
+</mat-form-field>
+
+
+<button mat-raised-button color="primary" (click)="timeTravel('past')">Viajar al Pasado</button>
+<button mat-raised-button color="primary" (click)="timeTravel('present')">Volver al Presente</button>
+<button mat-raised-button color="primary" (click)="timeTravel('future')">Viajar al Futuro</button>
