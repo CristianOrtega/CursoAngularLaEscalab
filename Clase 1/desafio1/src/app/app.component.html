@@ -1,0 +1,15 @@
+<h1>Relación Hijo-Padre</h1>
+
+<br />
+<br />
+<h1>Relación Padre-Hijo</h1>
+<h2>Nombre del Guerrero Sayayin</h2>
+
+<mat-form-field class="example-full-width">
+    <mat-label>Ingrese nombre del guerrero</mat-label>
+    <input matInput placeholder="Ej: Bardock" type="text" [(ngModel)]="name">
+</mat-form-field>
+
+<p>Hola {{ name }}, bienvenido al centro de entrenamiento.</p>
+<br />
+<app-sayayin [name]="name"></app-sayayin>

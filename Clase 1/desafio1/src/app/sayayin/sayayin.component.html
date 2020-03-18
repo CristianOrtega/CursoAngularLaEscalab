@@ -1,0 +1,4 @@
+<h2>Hola {{ name }} soy Goku! ¿Estás listo para entrenar?</h2>
+<app-sayayintraining [trainingMessage]="'Goku, vamos a entrenar a la habitación del tiempo'" (emisor)="goTraining($event)"> </app-sayayintraining>
+
+<h2>Goku: {{ messageTrainingResult }}</h2>
