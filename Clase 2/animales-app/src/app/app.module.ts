@@ -11,6 +11,8 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
+import { AnimalesService } from './servicios/animales.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,9 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    AnimalesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
