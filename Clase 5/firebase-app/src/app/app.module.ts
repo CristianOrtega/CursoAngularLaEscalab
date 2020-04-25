@@ -17,6 +17,14 @@ import { DetailsPostComponent } from './components/posts/details-post/details-po
 import { EditPostComponent } from './components/posts/edit-post/edit-post.component';
 import { ListPostComponent } from './components/posts/list-post/list-post.component';
 import { NewPostComponent } from './components/posts/new-post/new-post.component';
+import { AdminModule } from './components/admin/admin.module';
+import { ProfileModule } from './components/admin/profile/profile.module';
+import { LoginModule } from './components/auth/login/login.module';
+import { AboutModule } from './components/pages/about/about.module';
+import { HomeModule } from './components/pages/home/home.module';
+import { ListPostModule } from './components/posts/list-post/list-post.module';
+import { NewPostModule } from './components/posts/new-post/new-post.module';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +41,20 @@ import { NewPostComponent } from './components/posts/new-post/new-post.component
     DetailsPostComponent,
     EditPostComponent,
     ListPostComponent,
-    NewPostComponent
+    NewPostComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AdminModule,
+    ProfileModule,
+    LoginModule,
+    AboutModule,
+    HomeModule,
+    ListPostModule,
+    NewPostModule
   ],
   providers: [],
   bootstrap: [AppComponent]
