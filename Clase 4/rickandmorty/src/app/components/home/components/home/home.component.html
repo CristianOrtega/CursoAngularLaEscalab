@@ -1,6 +1,7 @@
 <div class="container">
     <app-banner></app-banner>
-    <app-search-character></app-search-character>
+    <app-search-character (filters)="doSearch($event)"> </app-search-character>
+    <div class="loading-mask" *ngIf="characterList.length === 0">  </div>
     <div class="character-grid">
         <app-character *ngFor="let character of characterList" [character]="character"></app-character>
     </div>

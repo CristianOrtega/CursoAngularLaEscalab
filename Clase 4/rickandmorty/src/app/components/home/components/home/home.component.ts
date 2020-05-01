@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { Character } from 'src/app/core/models/character';
+import { Search } from 'src/app/core/models/search/search';
 import { CharactersService } from 'src/app/core/services/character/characters.service';
 import { UtilFunctions } from 'src/app/utils/CommonsUtils';
 import Swiper from 'swiper';
@@ -33,6 +34,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.charactersService.findCharactersByPage(ids).pipe(take(1)).subscribe(response => {
       this.characterList = response;
     });
+  }
+
+  doSearch(event: Search): void {
+
   }
 
 }

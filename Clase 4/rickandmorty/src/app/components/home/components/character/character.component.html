@@ -9,27 +9,27 @@
         <mat-list>
             <mat-list-item>
                 <h3 matLine class="card-content-title">Status</h3>
-                <p class="card-content-description"> {{ character.status }} </p>
+                <p class="card-content-description">{{ character.status }}</p>
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item>
                 <h3 matLine>Species</h3>
-                <p class="card-content-description"> {{ character.species }} </p>
+                <p class="card-content-description">{{ character.species }}</p>
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item>
                 <h3 matLine>Gender</h3>
-                <p class="card-content-description"> {{ character.gender }} </p>
+                <p class="card-content-description">{{ character.gender }}</p>
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
+            <mat-list-item class="character-list-item">
                 <h3 matLine>Origin</h3>
-                <p class="card-content-description"> {{ character.origin.name }} </p>
+                <p class="card-content-description" [matTooltip]="character.origin.name" matTooltipPosition="left">{{ (character.origin.name | slice: 0:5) + (character.origin.name.length > 5 ? '...' : '') }}</p>
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
+            <mat-list-item class="character-list-item">
                 <h3 matLine>Last Location</h3>
-                <p class="card-content-description"> {{ character.location.name }} </p>
+                <p class="card-content-description" [matTooltip]="character.location.name" matTooltipPosition="left">{{ (character.location.name | slice: 0:5) + (character.location.name.length > 5 ? '...' : '') }}</p>
             </mat-list-item>
             <mat-divider></mat-divider>
         </mat-list>

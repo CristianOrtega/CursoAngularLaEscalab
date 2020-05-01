@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from '../material/material.module';
 import { BannerComponent } from './components/banner/banner.component';
 import { CharacterComponent } from './components/character/character.component';
 import { HomeComponent } from './components/home/home.component';
-import { HomeRoutingModule } from './home-routing.module';
 import { SearchCharacterComponent } from './components/search-character/search-character.component';
+import { HomeRoutingModule } from './home-routing.module';
 
 
 
@@ -21,7 +22,8 @@ import { SearchCharacterComponent } from './components/search-character/search-c
     CommonModule,
     SharedModule,
     HomeRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   exports: [
     HomeComponent
