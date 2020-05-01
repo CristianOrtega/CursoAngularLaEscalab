@@ -1,0 +1,17 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LocationService {
+
+  constructor(private http: HttpClient) { 
+
+  }
+
+  findLocationsByIds(ids: string) {
+    return this.http.get<any>(`${environment.RICKANDMORTY_API}/location/${ids}`);
+  }
+}
