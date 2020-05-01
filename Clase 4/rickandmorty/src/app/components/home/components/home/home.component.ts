@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
-import { LocationService } from 'src/app/core/services/location/location.service';
+import { Character } from 'src/app/core/models/character';
+import { CharactersService } from 'src/app/core/services/character/characters.service';
+import { UtilFunctions } from 'src/app/utils/CommonsUtils';
 import Swiper from 'swiper';
 
 
@@ -11,56 +13,26 @@ import Swiper from 'swiper';
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  listLocation: Location[];
+  characterList: Character[];
   mySwiper: Swiper;
 
-  constructor(private locationService: LocationService) {
-    this.listLocation = [];
+  constructor(private charactersService: CharactersService) {
+    this.characterList = [];
   }
 
   ngOnInit() {
-    this.findLocationsByIds(this.getIdsToFinds());
+    this.findCharactersByPage();
   }
 
   ngAfterViewInit() {
     this.mySwiper = new Swiper('.swiper-container');
   }
 
-  private findLocationsByIds(ids: string) {
-    this.locationService.findLocationsByIds(ids).pipe(take(1)).subscribe(response => {
-      this.listLocation = response;
+  private findCharactersByPage() {
+    let ids = UtilFunctions.getRamdomIdsToFinds(9);
+    this.charactersService.findCharactersByPage(ids).pipe(take(1)).subscribe(response => {
+      this.characterList = response;
     });
-  }
-
-  private getIdsToFinds(): string {
-    let array = [];
-    let ids = '';
-    for (let i = 0; i < 6; i++) {
-      let num = Math.floor((Math.random() * 76) + 1); 
-      if (array.length === 0) {
-        array.push(num);
-      } else {
-        let isRepeated = this.isNumberRepeated(array, num);
-        if (isRepeated) {
-          do {
-            num = Math.floor((Math.random() * 10) + 1); 
-            isRepeated = this.isNumberRepeated(array, num);
-          } while (isRepeated)
-        }
-        
-        array.push(num);
-      }
-      
-    }
-    return array.join();
-  }
-
-  private isNumberRepeated(array: number[], num: number): boolean {
-    let isRepeated = false;
-    if (array.indexOf(num) === 0) { 
-       isRepeated = true;
-    }
-    return isRepeated;
   }
 
 }
