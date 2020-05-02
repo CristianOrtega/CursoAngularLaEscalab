@@ -14,8 +14,8 @@ export class EpisodesService {
 
   }
   
-  findEpisodes(): Observable<SearchResult<Episode>> {
-    return this.http.get<any>(`${environment.RICKANDMORTY_API}/episode`);
+  findEpisodes(page: number): Observable<SearchResult<Episode>> {
+    return this.http.get<any>(`${environment.RICKANDMORTY_API}/episode?page=${page}`);
   }
 
 }

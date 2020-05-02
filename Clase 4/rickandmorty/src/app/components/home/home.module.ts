@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from '../material/material.module';
 import { BannerComponent } from './components/banner/banner.component';
@@ -23,7 +24,8 @@ import { HomeRoutingModule } from './home-routing.module';
     SharedModule,
     HomeRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   exports: [
     HomeComponent

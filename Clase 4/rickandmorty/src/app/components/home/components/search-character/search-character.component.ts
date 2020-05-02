@@ -9,14 +9,15 @@ import { Search } from 'src/app/core/models/search/search';
 export class SearchCharacterComponent implements OnInit {
 
   @Output() public filters = new EventEmitter<Search>();
-  @Output() public try = new EventEmitter<boolean>();
+  @Output() public tryLuck = new EventEmitter<boolean>();
 
-  characterId: number;
+  characterId: string;
   characterName: string;
   characterStatus: string;
   characterGender: string;
 
   constructor() { 
+    this.characterId = ''
     this.characterName = '';
   }
 
@@ -24,16 +25,24 @@ export class SearchCharacterComponent implements OnInit {
   }
 
   search() : void {
-    let search: Search;
-    search.id = this.characterId;
+    let search: Search = new Search();
+    search.id = this.getId();
     search.name = this.characterName;
     search.status = this.characterStatus;
     search.gender = this.characterGender;
     this.filters.emit(search);
   }
 
-  tryLuck(): void {
-    this.try.emit(true);
+  doTryLuck(): void {
+    this.tryLuck.emit(true);
+  }
+
+  private getId(): number {
+    let id = 0;
+    if (this.characterId && this.characterId !== '') {
+      id = parseFloat(this.characterId);
+    } 
+    return id;
   }
 
 }

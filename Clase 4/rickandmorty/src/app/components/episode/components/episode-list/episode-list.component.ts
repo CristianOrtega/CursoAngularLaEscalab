@@ -13,9 +13,15 @@ import { EpisodesService } from 'src/app/core/services/episode/episodes.service'
 export class EpisodeListComponent implements OnInit {
 
   totalRecords: number;
+  page: number;
+  pageSize: number;
+  
+  
   asyncEpisodeList: Observable<Episode[]>;
 
   constructor(private episodesService: EpisodesService) { 
+    this.page = 1;
+    this.pageSize = 20;
     this.totalRecords = 0;
   }
 
@@ -23,8 +29,14 @@ export class EpisodeListComponent implements OnInit {
     this.getEpisodeList();
   }
 
+
+  pageChanged(page: number): void {
+    this.page = page;
+    this.getEpisodeList();
+  }
+
   private loadEpisodes(): Observable<SearchResult<Episode>>  {
-    return this.episodesService.findEpisodes();
+    return this.episodesService.findEpisodes(this.page);
   }
 
   private getEpisodeList(): void {

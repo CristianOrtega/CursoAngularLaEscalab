@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { EpisodesService } from 'src/app/core/services/episode/episodes.service';
+import { MaterialModule } from '../material/material.module';
 import { EpisodeListComponent } from './components/episode-list/episode-list.component';
 import { EpisodeComponent } from './components/episode/episode.component';
 import { EpidoseRoutingModule } from './episode-routing.module';
@@ -9,12 +11,14 @@ import { EpidoseRoutingModule } from './episode-routing.module';
 
 @NgModule({
   declarations: [
-    EpisodeComponent, 
-    EpisodeListComponent
+    EpisodeListComponent,
+    EpisodeComponent
   ],
   imports: [
     CommonModule,
-    EpidoseRoutingModule
+    MaterialModule,
+    EpidoseRoutingModule,
+    NgxPaginationModule
   ],
   exports: [
     EpisodeListComponent,

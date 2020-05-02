@@ -1,1 +1,7 @@
-<p>episode works!</p>
+<mat-card class="character-card">
+    <mat-card-header>
+      <mat-card-title class="card-title" [matTooltip]="episode.name" matTooltipPosition="above">
+          {{ (episode.name | slice:0:13) + (episode.name.length > 13 ? '...' : '') }}
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>

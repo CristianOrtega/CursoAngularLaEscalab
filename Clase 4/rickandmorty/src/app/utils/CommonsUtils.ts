@@ -1,16 +1,16 @@
 export class UtilFunctions {
 
-    public static getRamdomIdsToFinds(count: number): string {
+    public static getRamdomIdsToFinds(totalRecords: number, count: number): string {
         let array = [];
         for (let i = 0; i < count; i++) {
-          let num = Math.floor((Math.random() * 493) + 1); 
+          let num = Math.floor((Math.random() * totalRecords) + 1); 
           if (array.length === 0) {
             array.push(num);
           } else {
             let isRepeated = this.isNumberRepeated(array, num);
             if (isRepeated) {
               do {
-                num = Math.floor((Math.random() * 493) + 1); 
+                num = Math.floor((Math.random() * totalRecords) + 1); 
                 isRepeated = this.isNumberRepeated(array, num);
               } while (isRepeated)
             }
