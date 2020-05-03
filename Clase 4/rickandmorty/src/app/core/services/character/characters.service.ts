@@ -25,7 +25,7 @@ export class CharactersService {
 
   findByFiltersAndPage(search: Search, page: number): Observable<SearchResult<Character>> {
     let url = `${environment.RICKANDMORTY_API}/character?`;
-    if (search && search.name !== '' || search.gender || search.status) {
+    if (search) {
       if (search.name !== '') {
         url += `name=${search.name}`;
       }
