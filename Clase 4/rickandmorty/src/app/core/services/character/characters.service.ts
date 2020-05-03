@@ -24,6 +24,25 @@ export class CharactersService {
   }
 
   findByFiltersAndPage(search: Search, page: number): Observable<SearchResult<Character>> {
-    return this.http.get<any>(`${environment.RICKANDMORTY_API}/character?page=${page}`);
+    let url = `${environment.RICKANDMORTY_API}/character?`;
+    if (search && search.name !== '' || search.gender || search.status) {
+      if (search.name !== '') {
+        url += `name=${search.name}`;
+      }
+      if (search.gender) {
+        url += url.includes('=') ? `&gender=${search.gender}` : `gender=${search.gender}`;
+      }
+      if (search.status) {
+        url += url.includes('=') ? `&status=${search.status}` : `status=${search.status}`;
+      }
+    } else {
+      url += `page=${page}`;
+    }
+    return this.http.get<any>(url);
   }
+
+  findById(id: string) {
+    return this.http.get<any>(`${environment.RICKANDMORTY_API}/character/${id}`);
+  }
+
 }

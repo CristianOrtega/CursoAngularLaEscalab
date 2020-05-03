@@ -49,10 +49,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
   doSearch(event: Search): void {
     if (event) {
       this.test = true;
-      this.showDefaultGrid = false;
-      this.characterList = [];
-      this.loading = true;
-      this.getCharacterList();
+      if (this.searchingById(event)) {
+        this.findCharacter(event.id);
+      } else {
+        this.showDefaultGrid = false;
+        this.characterList = [];
+        this.loading = true;
+        this.getCharacterList(event);
+      }
     }
   }
 
@@ -69,7 +73,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   pageChanged(page: number): void {
     this.page = page;
-    this.getCharacterList();
+    this.getCharacterList(null);
   }
 
   private findCharactersByLucky(): void {
@@ -87,18 +91,51 @@ export class HomeComponent implements OnInit, AfterViewInit {
         });
   }
 
-  private loadCharacters(): Observable<SearchResult<Character>>  {
-    return this.charactersService.findByFiltersAndPage(null, this.page);
-  }
-
-  private getCharacterList(): void {
-    this.asyncCharacterList = this.loadCharacters().pipe( 
+  private getCharacterList(search: Search): void {
+    this.asyncCharacterList = this.loadCharacters(search).pipe( 
       tap(response => {
         this.totalRecords = response.info.count;
         this.loading = false;
       }),
       map (response => response.results)
     );
+  }
+
+  private loadCharacters(search: Search): Observable<SearchResult<Character>>  {
+    return this.charactersService.findByFiltersAndPage(search, this.page);
+  }
+
+  private findCharacter(id: number): void {
+    let doFindById = true;
+    if (this.characterList.length === 1) {
+        if (this.characterList[0].id === id) {
+          doFindById = false;
+        }
+    } 
+
+    if (doFindById) {
+      this.findCharacterById(id.toString());
+    }
+  }
+
+  private findCharacterById(id: string): void {
+    this.showDefaultGrid = false;
+    this.characterList = [];
+    this.loading = true;
+    this.charactersService.findById(id).pipe(take(1)).subscribe(
+        response => {
+          this.characterList.push(response);
+          this.loading = false;
+          this.showDefaultGrid = true;
+        });
+  }
+
+  private searchingById(search: Search): boolean {
+    let itstrue = false;
+    if (search && search.id !== 0) {
+        itstrue = true;
+    }
+    return itstrue;
   }
 
   private showSnackBar(): void {

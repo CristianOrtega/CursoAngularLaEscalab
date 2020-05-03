@@ -1,9 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Episode } from '../../models/episode';
-import { SearchResult } from '../../models/response/search-results';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +11,8 @@ export class EpisodesService {
 
   }
   
-  findEpisodes(page: number): Observable<SearchResult<Episode>> {
-    return this.http.get<any>(`${environment.RICKANDMORTY_API}/episode?page=${page}`);
+  findEpisodesBySeasson(seasson: string) {
+    return this.http.get<any>(`${environment.RICKANDMORTY_API}/episode?episode=${seasson}`);
   }
 
 }

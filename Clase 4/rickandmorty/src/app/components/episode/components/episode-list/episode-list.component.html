@@ -1,4 +1,4 @@
-<!--<div class="container">
+<div class="container">
     <div class="row around-xs">
         <div class="col-xs-2">
             <div class="box">
@@ -7,27 +7,17 @@
         </div>
         <div class="col-xs-2">
             <div class="box">
-                <button mat-raised-button class="mat-button-custom-color">Temporada 2</button>
+                <button mat-raised-button class="mat-button-custom-color" (click)="searchSeasson('S02')">Temporada 2</button>
             </div>
         </div>
         <div class="col-xs-2">
             <div class="box">
-                <button mat-raised-button color="primary">Temporada 3</button>
+                <button mat-raised-button color="primary" (click)="searchSeasson('S03')">Temporada 3</button>
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
-<div class="container">
-    <div *ngFor="let episode of asyncEpisodeList | async | paginate: { id: 'episodeList', 
-                                                                                        itemsPerPage: pageSize, 
-                                                                                        currentPage: page, 
-                                                                                        totalItems: totalRecords }">
-    <div class="card-body p-2">
-            <app-episode [(episode)]=episode> </app-episode>
-        </div>
-    </div>
-    <div class="text-center" *ngIf="totalRecords > pageSize">
-        <pagination-controls (pageChange)="pageChanged($event)" previousLabel='Anterior' nextLabel='Siguiente' id='episodeList'></pagination-controls>
-    </div>
+<div class="episode-grid">
+    <app-episode *ngFor="let episode of episodeList" [episode]="episode"></app-episode>
 </div>

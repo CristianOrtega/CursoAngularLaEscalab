@@ -6,6 +6,7 @@ interface IEpisode {
     characters: string[];
     url: string;
     created: string;
+    image: string;
 }
 
 export class Episode implements IEpisode {
@@ -16,4 +17,5 @@ export class Episode implements IEpisode {
     characters: string[];
     url: string;
     created: string;
+    image: string;
 }

@@ -1,7 +1,6 @@
-<mat-card class="character-card">
-    <mat-card-header>
-      <mat-card-title class="card-title" [matTooltip]="episode.name" matTooltipPosition="above">
-          {{ (episode.name | slice:0:13) + (episode.name.length > 13 ? '...' : '') }}
-      </mat-card-title>
-    </mat-card-header>
-  </mat-card>
+<div class="hvrbox">
+	<img class="hvrbox-layer_bottom" [src]="episode.image" alt="" >
+	<div class="hvrbox-layer_top hvrbox-layer_scale-rotate">
+		<div class="hvrbox-text">{{ episode | description }}</div>
+	</div>
+</div>
