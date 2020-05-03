@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   doSearch(event: Search): void {
     if (event) {
       this.test = true;
+      this.page = 1;
       if (this.searchingById(event)) {
         this.findCharacter(event.id);
       } else {
