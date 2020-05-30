@@ -20,7 +20,7 @@ import { EpidoseRoutingModule } from './episode-routing.module';
     CommonModule,
     MaterialModule,
     EpidoseRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   exports: [
     EpisodeListComponent,

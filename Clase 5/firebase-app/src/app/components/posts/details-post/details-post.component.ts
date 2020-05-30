@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { PostService } from '../post.service';
+import { Observable } from 'rxjs';
+import { PostI } from '../../../shared/models/post.interface';
 
 @Component({
   selector: 'app-details-post',
@@ -6,10 +10,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details-post.component.scss']
 })
 export class DetailsPostComponent implements OnInit {
+  public post$: Observable<PostI>;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private postSvc: PostService) { }
 
   ngOnInit() {
+    const idPost = this.route.snapshot.params.id; //devuelve un objeto con el parametro capturado, el params solito devuelve un observable
+    this.post$ = this.postSvc.getOnePost(idPost); //obtengo el post para ese id recuperado de la url
   }
 
 }
